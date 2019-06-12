@@ -12,7 +12,7 @@ https://github.com/kantega/react-and-spring
 
 https://github.com/search?p=1&q=springboot+react&ref=searchresults&type=Repositories&utf8=%E2%9C%93
 
-## spring boot 생성
+## spring boot 생성 필수x
 https://start.spring.io/
 
 ## 외국 유명 유튜버
