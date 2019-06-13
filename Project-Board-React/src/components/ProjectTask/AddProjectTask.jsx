@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { addProjectTask } from "../../actions/projectTaskActions"
+import classname from "classnames"
 
 class AddProjectTask extends Component {
     constructor() {
@@ -10,9 +11,19 @@ class AddProjectTask extends Component {
         this.state = {
             summary: "",
             acceptanceCriteria: "",
-            status: ""
+            status: "",
+            errors: {}
         };
     }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
     onChange = (e) => {
         this.setState(
             {
@@ -32,6 +43,9 @@ class AddProjectTask extends Component {
     }
 
     render() {
+
+        const {errors} = this.state;
+
         return (
             <div className="addProjectTask">
                 <div className="container">
@@ -46,13 +60,23 @@ class AddProjectTask extends Component {
                             >
                                 <div className="form-group">
                                     <input 
-                                    className="form-control form-control-lg" 
+                                    className={
+                                        classname(
+                                            "form-control form-control-lg" ,
+                                            {"is-invalid": errors.summary}
+                                        )
+                                    }
                                     placeholder="Project Task summary" 
                                     type="text" 
                                     name="summary" 
                                     value={this.state.summary}
                                     onChange={this.onChange}
                                     />
+                                    {
+                                        errors.summary && (
+                                            <div className="invalid-feedback">{errors.summary}</div>
+                                        )
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <textarea 
@@ -95,4 +119,7 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(null, {addProjectTask})(AddProjectTask);
+export default connect(
+    mapStateToProps, 
+    {addProjectTask}
+)(AddProjectTask);

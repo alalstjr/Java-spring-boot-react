@@ -1,8 +1,6 @@
 import { GET_ERRORS } from "../actions/types"
 
-const initialState = {
-    error: "에러"
-}
+const initialState = {}
 
 export default function(state = initialState, actions) {
     switch(actions.type) {
