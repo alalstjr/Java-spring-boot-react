@@ -257,6 +257,8 @@ https://lalwr.blogspot.com/2018/05/valid-bindingresult.html 스프링에서 검�
 
 ## @NotBlank
 http://wonwoo.ml/index.php/post/520
+## @Autowired
+https://galid1.tistory.com/512
 
 # 개발시 API 테스트 프로그램
 https://dpdpwl.tistory.com/71
